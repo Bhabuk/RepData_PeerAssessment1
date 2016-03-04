@@ -9,8 +9,6 @@ output:
 ## Loading and preprocessing the data
 The code here checks for activity.csv file. If it is already there then skips the code otherwise unzips the file. The file is then read as csv and assigned to stepData.
 ```{r}
-library(lattice)
-
 if(!file.exists('activity.csv')){
   unzip('activity.zip')
 }
@@ -65,6 +63,8 @@ median(DailystepsImp$steps)
 
 ## Are there differences in activity patterns between weekdays and weekends?
 ```{r}
+library(lattice)
+
 stepData$DateType <-ifelse(as.POSIXlt(stepData$date)$wday %in% c(0,6), 'weekend', 'weekday')
 
 timeseriesplot <- aggregate(steps ~ interval + DateType, stepData, mean)

@@ -23,7 +23,7 @@ Dailysteps <- aggregate(steps ~ date, stepData, sum)
 barplot(Dailysteps$steps,names.arg=Dailysteps$date,ylim=c(0, 20000), xlab="date", ylab="Total steps")
 ```
 
-![](PA1_template_files/figure-html/unnamed-chunk-2-1.png)
+![plot](figure/Rplot1.png)
 
 ```r
 Meanofsteps<-mean(Dailysteps$steps)
@@ -51,7 +51,7 @@ timeseriesplot<- aggregate(steps ~ interval,stepData,mean)
 plot(timeseriesplot$steps,type = 'l',xlab ="Interval")
 ```
 
-![](PA1_template_files/figure-html/unnamed-chunk-3-1.png)
+![plot](figure/Rplot2.png)
 
 ```r
 maxstep<-timeseriesplot$interval[which.max(timeseriesplot$steps)]
@@ -85,7 +85,7 @@ DailystepsImp <- aggregate(steps ~ date, data = ImputedData, FUN = sum)
 barplot(DailystepsImp$steps,names.arg=DailystepsImp$date,xlab="Date", ylab="Total steps")
 ```
 
-![](PA1_template_files/figure-html/unnamed-chunk-4-1.png)
+![plot](figure/Rplot3.png)
 
 ```r
 mean(DailystepsImp$steps)
@@ -112,4 +112,4 @@ timeseriesplot <- aggregate(steps ~ interval + DateType, stepData, mean)
 xyplot(steps ~ interval | DateType, data=timeseriesplot, layout=c(2,1), type='l')
 ```
 
-![](PA1_template_files/figure-html/unnamed-chunk-5-1.png)
+![plot](figure/Rplot4.png)
